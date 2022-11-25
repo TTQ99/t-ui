@@ -1,6 +1,7 @@
 <template>
   <div>
     <slot></slot>
+    <button @click="broadcast1">tform</button>
   </div>
 </template>
 
@@ -13,6 +14,10 @@ export default {
   methods: {
     loga(val) {
       console.log(val, "tform");
+    },
+    broadcast1() {
+      this._broadcast("TFormItem", "e", "i am tform");
+      this.$emit("tfromitem", "i am tform");
     },
   },
 };

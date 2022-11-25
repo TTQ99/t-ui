@@ -1,5 +1,10 @@
+function broadcast(componentName, eventName, params) {
+  console.log(this);
+}
+
 export default {
   methods: {
+    // 向上级组件触发事件，传递数据
     _dispatch(componentName, eventName, params) {
       console.log(arguments);
       let parent = this.$parent || this.$root;
@@ -29,6 +34,9 @@ export default {
       //     parent.$emit.apply(parent, [eventName, params]);
       //   }
     },
-    _broadcast() {},
+    // 向下级组件触发事件，传递数据
+    _broadcast(componentName, eventName, params) {
+      broadcast.call(this, componentName, eventName, params);
+    },
   },
 };
